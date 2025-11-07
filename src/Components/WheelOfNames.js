@@ -1,13 +1,13 @@
 import React, { useState, useMemo } from "react";
 import Swal from 'sweetalert2';
-import logo from "./image.jpg"
+import logo from './image1.jpg'
 export default function WheelOfNames() {
   const [names, setNames] = useState([]);
   const [input, setInput] = useState("");
   const [rotation, setRotation] = useState(0);
   const [spinning, setSpinning] = useState(false);
 
-  const size = 200;
+  const size = 250;
   const radius = size / 2;
   const sliceAngle = names.length > 0 ? 360 / names.length : 0;
   const colors = useMemo(() => ["#ffe27a", "#89c2ff", "#ffb38a", "#9ff4d1", "#ff9a9a", "#c8b6ff"], []);
@@ -57,28 +57,9 @@ export default function WheelOfNames() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '480px', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
 
         {/* العنوان والصورة */}
-        <div style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '8px',
-          marginBottom: '12px',
-          background: '#fff',
-          padding: '8px 12px',
-          borderRadius: '8px'
-        }}>
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '12px', background: '#fff', padding: '8px 12px', borderRadius: '8px' }}>
           <img src={logo} alt="Logo" style={{ width: '30px', height: '30px', borderRadius:'50%' }} />
-          <h1 style={{
-            fontSize: '20px',
-            fontWeight: 'bold',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '5px',
-            color: 'black',
-            margin: 0
-          }}>
+          <h1 style={{ fontSize: '20px', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px', color: 'black', margin: 0 }}>
             ❥. 𝔹𝕚𝕟 𝕤𝕒𝕚𝕕
             <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_Oman.svg" alt="Oman" style={{ width: '24px', height: '16px' }} />
           </h1>
@@ -87,7 +68,8 @@ export default function WheelOfNames() {
         {/* العجلة */}
         <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <div style={{ position: 'absolute', top: '-6px', zIndex: 20, width: 0, height: 0, borderLeft: '10px solid transparent', borderRight: '10px solid transparent', borderTop: '18px solid white' }} />
-          <div style={{ width: size, height: size, borderRadius: '50%', backgroundColor: '#87CEFA', position: 'relative' }}>
+
+          <div style={{ width: size, height: size, borderRadius: '50%', backgroundColor: '#87CEFA', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div style={{ position: 'absolute', inset: 0, transform: `rotate(${rotation}deg)`, transition: 'transform 15s cubic-bezier(0.12, 0.01, 0, 1)' }}>
               <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
                 {names.length === 0 ? (
@@ -108,13 +90,15 @@ export default function WheelOfNames() {
                     );
                   })
                 )}
-                <circle cx={radius} cy={radius} r={30} fill="#111" stroke="#fff" strokeWidth={2} />
-                <circle cx={radius} cy={radius} r={4} fill="#fff" />
+                <circle cx={radius} cy={radius} r={36} fill="#000" stroke="#fff" strokeWidth={2} />
+                <circle cx={radius} cy={radius} r={6} fill="#fff" />
               </svg>
             </div>
-          </div>
-          <div style={{ marginTop: '10px', display: 'flex', gap: '8px' }}>
-            <button onClick={spin} disabled={spinning || names.length === 0} style={{ padding: '8px 16px', borderRadius: '12px', backgroundColor: '#fff', color: '#000', fontWeight: 'bold' }}>{spinning ? 'تدور...' : 'أدر'}</button>
+
+            {/* زر أدر في وسط العجلة */}
+            <button onClick={spin} disabled={spinning || names.length === 0} style={{ position: 'absolute', width: '70px', height: '70px', borderRadius: '50%', backgroundColor: '#000', color: '#fff', fontWeight: 'bold', zIndex: 5 }}>
+              {spinning ? 'دوران' : 'أدر'}
+            </button>
           </div>
         </div>
 
