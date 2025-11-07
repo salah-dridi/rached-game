@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import Swal from 'sweetalert2';
 
 import logo from './image1.jpg'
+ import logo2 from './image2.jpg'
 export default function WheelOfNames() {
   const [names, setNames] = useState([]);
   const [input, setInput] = useState("");
@@ -54,7 +55,16 @@ export default function WheelOfNames() {
   }
 
   return (
-    <div style={{ backgroundColor: '#333', color: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{
+      backgroundImage: `url(${logo2 })`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      color: '#fff',
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
       <header style={{ backgroundColor: '#333', padding: '12px 16px', position: 'sticky', top: 0, zIndex: 20, borderBottom: '2px solid #222', borderRadius: '0 0 12px 12px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', boxShadow: '0 -6px 20px rgba(0,0,0,0.3)'}}>
         <img src={logo} alt="Logo" style={{ width: '30px', height: '30px', borderRadius:'50%' }} />
         <h1 style={{ fontSize: '18px', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px', color: '#fff', margin: 0, textShadow: '0 0 4px #ccc' }}>
@@ -62,7 +72,7 @@ export default function WheelOfNames() {
           <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_Oman.svg" alt="Oman" style={{ width: '24px', height: '16px' }} />
         </h1>
       </header>
-      <main style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '16px', position: 'relative', backgroundColor: '#333' }}>
+      <main style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '16px', position: 'relative' }}>
         <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '480px', width: '100%', alignItems: 'center' }}>
           <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div style={{ position: 'absolute', top: '-6px', zIndex: 5, width: 0, height: 0, borderLeft: '10px solid transparent', borderRight: '10px solid transparent', borderTop: '18px solid white' }} />
@@ -93,7 +103,7 @@ export default function WheelOfNames() {
                   <circle cx={radius} cy={radius} r={6} fill="#fff" />
                 </svg>
               </div>
-              <button onClick={spin} disabled={spinning || names.length === 0} style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '70px', height: '70px', borderRadius: '50%', backgroundColor: '#000', color: '#fff', fontWeight: 'bold', zIndex: 15 }}>
+              <button onClick={spin} disabled={spinning || names.length === 0} style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '65px', height: '65px', borderRadius: '50%', backgroundColor: '#000', color: '#fff', fontWeight: 'bold', zIndex: 15 }}>
                 {spinning ? 'دوران' : 'أدر'}
               </button>
             </div>
